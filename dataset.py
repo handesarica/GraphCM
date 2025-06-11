@@ -58,10 +58,10 @@ class Dataset(object):
             if previous_sid != sid:
                 # a new session starts
                 if previous_sid != -1:
-                    assert len(uids) // 10 == len(qids)
-                    assert len(vids) // 10 == len(qids)
-                    assert len(relevances) // 10 == len(qids)
-                    assert (len(clicks) - 1) // 10 == len(qids)
+                    assert len(uids) // 30 == len(qids)
+                    assert len(vids) // 30 == len(qids)
+                    assert len(relevances) // 30 == len(qids)
+                    assert (len(clicks) - 1) // 30 == len(qids)
                     last_rank = 0
                     for idx, click in enumerate(clicks[1:]):
                         last_rank = idx + 1 if click else last_rank
