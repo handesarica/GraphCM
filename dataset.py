@@ -53,6 +53,7 @@ class Dataset(object):
         previous_sid = -1
         qids, uids, vids, clicks, relevances = [], [], [], [], []
         for line in lines:
+            print(line)
             attr = line.strip().split('\t')
             sid = int(attr[0].strip())
             if previous_sid != sid:
