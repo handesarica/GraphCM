@@ -23,7 +23,7 @@ class Dataset(object):
         self.train_set = self.load_dataset(os.path.join(self.data_dir, 'train_per_query_quid.txt'), mode='train')
         self.valid_set = self.load_dataset(os.path.join(self.data_dir, 'valid_per_query_quid.txt'), mode='valid')
         self.test_set = self.load_dataset(os.path.join(self.data_dir, 'test_per_query_quid.txt'), mode='test')
-        self.label_set = self.load_dataset(os.path.join(self.data_dir, 'human_label_for_GraphCM_per_query_quid.txt'), mode='label')
+        #self.label_set = self.load_dataset(os.path.join(self.data_dir, 'human_label_for_GraphCM_per_query_quid.txt'), mode='label')
         self.trainset_size = len(self.train_set)
         self.validset_size = len(self.valid_set)
         self.testset_size = len(self.test_set)
