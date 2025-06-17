@@ -55,7 +55,7 @@ def generate_data_per_query(infos_per_query, indices, file_path, file_name):
     print('      - {}'.format('total clicks: {}'.format(cnt_click)))
     file_quid.close()
     return set(query_list), set(doc_list), set(vtype_list)
-
+"""
 def generate_data_per_query_for_human_label(relevance_queries, infos_per_session, indices, file_path, file_name):
     # Match and resort the every 10 docs within a query session
     print('  - {}'.format('Match and resorting every 10 docs with a query session'))
@@ -136,7 +136,8 @@ def generate_data_per_query_for_human_label(relevance_queries, infos_per_session
     print('    - {}'.format('total/unique vtype: {}, {}'.format(len(vtype_list), len(set(vtype_list)))))
     print('    - {}'.format('total clicks: {}'.format(cnt_click)))
     file.close()
-
+"""
+"""
 def generate_data_per_session_for_human_label(relevance_queries, infos_per_session, indices, file_path, file_name):
     # NOTE: The following implementation is derived from FUNC generate_data_per_query_for_human_label, 
     #       so that it may be redundant and insufficient.
@@ -206,7 +207,7 @@ def generate_data_per_session_for_human_label(relevance_queries, infos_per_sessi
                     print('    - {}'.format('{}: {}'.format('uids', uids)))
                     assert 0
     assert cnt == 2000
-
+"""
 def xml_line_removable(xml_line):
     if xml_line.find('<query>') != -1 and xml_line.find('</query>') != -1:
         return 1
