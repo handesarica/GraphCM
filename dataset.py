@@ -85,14 +85,14 @@ class Dataset(object):
                 uids = json.loads(attr[2].strip())
                 vids = json.loads(attr[3].strip())
                 clicks = [0] + json.loads(attr[4].strip())
-                relevances = json.loads(attr[5].strip()) if mode == 'label' else [0 for _ in range(self.max_d_num)]
+                #relevances = json.loads(attr[5].strip()) if mode == 'label' else [0 for _ in range(self.max_d_num)]
             else:
                 # the previous session continues
                 qids.append(int(attr[1].strip()))
                 uids = uids + json.loads(attr[2].strip())
                 vids = vids + json.loads(attr[3].strip())
                 clicks = clicks + json.loads(attr[4].strip())
-                relevances = relevances + (json.loads(attr[5].strip()) if mode == 'label' else [0 for _ in range(self.max_d_num)])
+                #relevances = relevances + (json.loads(attr[5].strip()) if mode == 'label' else [0 for _ in range(self.max_d_num)])
         last_rank = 0
         for idx, click in enumerate(clicks[1:]):
             last_rank = idx + 1 if click else last_rank
