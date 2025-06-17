@@ -23,7 +23,7 @@ def parse_args():
                         help='perform click prediction task on valid set')
     parser.add_argument('--test', action='store_true',
                         help='perform click prediction task on test set')
-    parser.add_argument('--rank', action='store_true',
+    #parser.add_argument('--rank', action='store_true',
                         help='perform relevance estimation task on human labeled test set')
     parser.add_argument('--num_iter', type=int, default=1,
                         help='the number of duplicated evaluation for valid/test/rank')
@@ -189,6 +189,7 @@ def rank(args, dataset):
     trunc_levels = [1, 3, 5, 10]
     sum_ndcgs = {trunc_level: 0.0 for trunc_level in trunc_levels}
     summary_writer = SummaryWriter(args.summary_dir)
+    """
     for i in range(args.num_iter):
         label_batches = dataset.gen_mini_batches('label', dataset.labelset_size, shuffle=False)
         ndcgs = model.ranking(label_batches, dataset)
@@ -196,7 +197,7 @@ def rank(args, dataset):
             sum_ndcgs[trunc_level] += ndcgs[trunc_level]
             summary_writer.add_scalar('final_NDCG/avg_{}'.format(trunc_level), sum_ndcgs[trunc_level] / (i + 1), i)
             summary_writer.add_scalar('final_NDCG/{}'.format(trunc_level), ndcgs[trunc_level], i)
-        
+    """        
 def run():
     """
     Prepares and runs the whole system.
@@ -241,8 +242,8 @@ def run():
         valid(args, dataset)
     if args.test:
         test(args, dataset)
-    if args.rank:
-        rank(args, dataset)
+    #if args.rank:
+        #rank(args, dataset)
     logger.info('run done.')
 
 if __name__ == '__main__':
