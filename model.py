@@ -131,13 +131,13 @@ class Model(object):
                 torch.cuda.empty_cache()
                 self.writer.add_scalar("test/click_loss", test_click_loss, self.global_step)
                 self.writer.add_scalar("test/perplexity", test_perplexity, self.global_step)
-                
+                """
                 label_batches = dataset.gen_mini_batches('label', dataset.labelset_size, shuffle=False)
                 ndcgs = self.ranking(label_batches, dataset)
                 torch.cuda.empty_cache()
                 for trunc_level in self.trunc_levels:
                     self.writer.add_scalar("rank/{}".format(trunc_level), ndcgs[trunc_level], self.global_step)
-
+                """
                 if valid_perplexity < metric_save:
                     metric_save = valid_perplexity
                     patience = 0
@@ -192,7 +192,7 @@ class Model(object):
             rel_loss = 1.0 * total_rel_loss / total_num
             perplexity = (2 ** (- perplexity_at_rank / total_num)).sum() / 10
         return click_loss, rel_loss, perplexity
-    
+    """
     def ranking(self, label_batches, dataset):
         ndcgs, cnt_useless_session, cnt_usefull_session = {}, {}, {}
         for k in self.trunc_levels:
@@ -230,7 +230,7 @@ class Model(object):
             for k in self.trunc_levels:
                 ndcgs[k] /= cnt_usefull_session[k]
         return ndcgs
-
+    """
     def dcg(self, ranking_relevances):
         """
         Computes the DCG for a given ranking_relevances
