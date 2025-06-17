@@ -173,7 +173,7 @@ def test(args, dataset):
         summary_writer.add_scalar('final_test/avg_perplexity', sum_perplexity / (i + 1), i)
         summary_writer.add_scalar('final_test/click_loss', test_click_loss, i)
         summary_writer.add_scalar('final_test/perplexity', perplexity, i)
-/*
+        
 def rank(args, dataset):
     """
     ranking performance on test files
@@ -196,7 +196,7 @@ def rank(args, dataset):
             sum_ndcgs[trunc_level] += ndcgs[trunc_level]
             summary_writer.add_scalar('final_NDCG/avg_{}'.format(trunc_level), sum_ndcgs[trunc_level] / (i + 1), i)
             summary_writer.add_scalar('final_NDCG/{}'.format(trunc_level), ndcgs[trunc_level], i)
-*/        
+        
 def run():
     """
     Prepares and runs the whole system.
