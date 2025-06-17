@@ -231,12 +231,13 @@ class Model(object):
                 ndcgs[k] /= cnt_usefull_session[k]
         return ndcgs
     """
+    """
     def dcg(self, ranking_relevances):
         """
         Computes the DCG for a given ranking_relevances
         """
         return sum([(2 ** relevance - 1) / math.log(rank + 2, 2) for rank, relevance in enumerate(ranking_relevances)])
-
+    """
     def save_model(self, model_dir, model_prefix):
         """
         Save the model into model_dir with model_prefix as the model indicator
