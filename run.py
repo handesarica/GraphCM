@@ -24,7 +24,7 @@ def parse_args():
     parser.add_argument('--test', action='store_true',
                         help='perform click prediction task on test set')
     #parser.add_argument('--rank', action='store_true',
-                        help='perform relevance estimation task on human labeled test set')
+    #                    help='perform relevance estimation task on human labeled test set')
     parser.add_argument('--num_iter', type=int, default=1,
                         help='the number of duplicated evaluation for valid/test/rank')
 
