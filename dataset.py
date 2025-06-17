@@ -27,7 +27,7 @@ class Dataset(object):
         self.trainset_size = len(self.train_set)
         self.validset_size = len(self.valid_set)
         self.testset_size = len(self.test_set)
-        self.labelset_size = len(self.label_set)
+        #self.labelset_size = len(self.label_set)
 
         self.query_qid = utils.load_dict(self.data_dir, 'query_qid.dict')
         self.url_uid = utils.load_dict(self.data_dir, 'url_uid.dict')
@@ -39,7 +39,7 @@ class Dataset(object):
         self.logger.info('Train set size: {} sessions.'.format(len(self.train_set)))
         self.logger.info('Dev set size: {} sessions.'.format(len(self.valid_set)))
         self.logger.info('Test set size: {} sessions.'.format(len(self.test_set)))
-        self.logger.info('Label set size: {} sessions.'.format(len(self.label_set)))
+        #self.logger.info('Label set size: {} sessions.'.format(len(self.label_set)))
         self.logger.info('Unique query num, including zero vector: {}'.format(self.query_size))
         self.logger.info('Unique doc num, including zero vector: {}'.format(self.doc_size))
         self.logger.info('Unique vtype num, including zero vector: {}'.format(self.vtype_size))
@@ -146,8 +146,8 @@ class Dataset(object):
             data = self.valid_set
         elif set_name == 'test':
             data = self.test_set
-        elif set_name == 'label':
-            data = self.label_set
+        #elif set_name == 'label':
+        #data = self.label_set
         else:
             raise NotImplementedError('No data set named as {}'.format(set_name))
         data_size = len(data)
