@@ -61,7 +61,7 @@ def parse_args():
                                 help='size of the vtype embeddings')
     model_settings.add_argument('--hidden_size', type=int, default=128,
                                 help='size of RNN hidden units')
-    model_settings.add_argument('--max_d_num', type=int, default=10,
+    model_settings.add_argument('--max_d_num', type=int, default=30,
                                 help='max number of docs in a session')
     model_settings.add_argument('--use_pretrain_embed', action='store_true',
                                 help='whether use pretrained embeddings')
