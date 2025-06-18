@@ -233,9 +233,9 @@ class Model(object):
     """
     """
     def dcg(self, ranking_relevances):
-        """
+        
         #Computes the DCG for a given ranking_relevances
-        """
+        
         return sum([(2 ** relevance - 1) / math.log(rank + 2, 2) for rank, relevance in enumerate(ranking_relevances)])
     """
     def save_model(self, model_dir, model_prefix):
