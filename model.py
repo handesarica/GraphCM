@@ -107,7 +107,7 @@ class Model(object):
             TRUE_CLICKS = rnn_utils.pad_sequence([torch.from_numpy(np.array(true_click, dtype=np.float32)) for true_click in batch['true_clicks']], batch_first=True)
             MASK = rnn_utils.pad_sequence([torch.ones(len(true_click)) for true_click in batch['true_clicks']], batch_first=True)
             MASK = (MASK == 1)
-            query_num = MASK.sum() // 10
+            query_num = MASK.sum() // 30
             if use_cuda:
                 TRUE_CLICKS, MASK = TRUE_CLICKS.cuda(), MASK.cuda()
 
@@ -169,14 +169,14 @@ class Model(object):
 
     def evaluate(self, eval_batches, dataset):
         total_click_loss, total_rel_loss, total_num = 0., 0., 0
-        perplexity_at_rank = torch.zeros(10, device=device, dtype=torch.float) # 10 docs per query
+        perplexity_at_rank = torch.zeros(30, device=device, dtype=torch.float) # 10 docs per query
         with torch.no_grad():
             for b_idx, batch in enumerate(eval_batches):
                 # Create TRUE_CLICKS & MASK tensor
                 TRUE_CLICKS = rnn_utils.pad_sequence([torch.from_numpy(np.array(true_click, dtype=np.float32)) for true_click in batch['true_clicks']], batch_first=True)
                 MASK = rnn_utils.pad_sequence([torch.ones(len(true_click)) for true_click in batch['true_clicks']], batch_first=True)
                 MASK = (MASK == 1)
-                query_num = MASK.sum() // 10
+                query_num = MASK.sum() // 30
                 if use_cuda:
                     TRUE_CLICKS, MASK = TRUE_CLICKS.cuda(), MASK.cuda()
 
@@ -204,7 +204,7 @@ class Model(object):
                 self.model.eval()
                 true_relevances_batches = batch['relevances']
                 pred_logits, pred_rels = self.model(batch['qids'], batch['uids'], batch['vids'], batch['clicks'])
-                relevances_batches = torch.zeros(pred_logits.shape[0], 10)
+                relevances_batches = torch.zeros(pred_logits.shape[0], 30)
                 for r_idx, relevance_start in enumerate(batch['relevance_starts']): 
                     relevances_batches[r_idx] = pred_logits[r_idx, relevance_start : relevance_start + 10]
                 relevances_batches = relevances_batches.data.cpu().numpy().tolist()
