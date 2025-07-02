@@ -56,9 +56,9 @@ def parse_args():
                                 help='size of the query/doc embeddings')
     model_settings.add_argument('--pos_embed_size', type=int, default=4,
                                 help='size of the position embeddings')
-    model_settings.add_argument('--click_embed_size', type=int, default=4,
+    model_settings.add_argument('--click_embed_size', type=int, default=30,
                                 help='size of the click embeddings')
-    model_settings.add_argument('--vtype_embed_size', type=int, default=8,
+    model_settings.add_argument('--vtype_embed_size', type=int, default=30,
                                 help='size of the vtype embeddings')
     model_settings.add_argument('--hidden_size', type=int, default=128,
                                 help='size of RNN hidden units')
