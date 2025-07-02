@@ -3,6 +3,7 @@ import sys
 import time
 import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
 import pickle
 import argparse
 import logging
