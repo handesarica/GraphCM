@@ -68,6 +68,7 @@ class DGATLayer(nn.Module):
         batch_size = CLICKS.shape[0]
         seq_len = CLICKS.shape[1]
         click_embedding = self.click_embedding(CLICKS)  # [batch_size, seq_len, click_embed_size]
+        print(VIDS)
         vid_embedding = self.vid_embedding(VIDS)  # [batch_size, seq_len, vtype_embed_size]
         pos_embedding = self.pos_embedding.weight.unsqueeze(dim=0).repeat(batch_size, seq_len // 30, 1)  # [batch_size, seq_len, embed_size]
 
