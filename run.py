@@ -54,7 +54,7 @@ def parse_args():
                                 help='the combination type for examination and relevance')
     model_settings.add_argument('--embed_size', type=int, default=64,
                                 help='size of the query/doc embeddings')
-    model_settings.add_argument('--pos_embed_size', type=int, default=4,
+    model_settings.add_argument('--pos_embed_size', type=int, default=30,
                                 help='size of the position embeddings')
     model_settings.add_argument('--click_embed_size', type=int, default=30,
                                 help='size of the click embeddings')
